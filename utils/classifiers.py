@@ -18,7 +18,7 @@ def classify_SVM(_X_train, _X_test, _y_train, _y_test):
 
 
 def classify_DTC(_X_train, _X_test, _y_train, _y_test):
-    clf= DecisionTreeClassifier(criterion='entropy', random_state=0)
+    clf = DecisionTreeClassifier(criterion='entropy', random_state=0)
     clf.fit(_X_train, _y_train)
     y_pred = clf.predict(_X_test)
     acc = metrics.accuracy_score(_y_test, y_pred)
@@ -66,7 +66,7 @@ def classify_GNB(_X_train, _X_test, _y_train, _y_test):
 
 def classify_MLP(_X_train, _X_test, _y_train, _y_test):
     """Multi-layer Perceptron classifier"""
-    clf = MLPClassifier(solver='lbfgs', alpha=1e-5,hidden_layer_sizes=(15,), random_state=1)
+    clf = MLPClassifier(alpha=1e-5, hidden_layer_sizes=(15,), random_state=1)
     clf.fit(_X_train, _y_train)
     y_pred = clf.predict(_X_test)
     acc = metrics.accuracy_score(_y_test, y_pred)
