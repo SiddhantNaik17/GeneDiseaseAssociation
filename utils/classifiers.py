@@ -1,3 +1,4 @@
+from joblib import dump
 from sklearn.ensemble import RandomForestClassifier, ExtraTreesClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
@@ -19,22 +20,41 @@ classifiers = {
 }
 
 
-def _classify(x_train, x_test, y_train, y_test, classifier):
+def _classify(x_train, x_test, y_train, y_test, classifier, dump_name=None):
     classifier.fit(x_train, y_train)
+    if dump_name:
+        dump(classifier, dump_name)
     y_pred = classifier.predict(x_test)
     return metrics.accuracy_score(y_test, y_pred)
 
 
-def classify(x_train, x_test, y_train, y_test, results=None, fs='None'):
+def classify(x_train, x_test, y_train, y_test, results=None, fs='None', dump_name=None):
     result = [
-        ['SVM', _classify(x_train, x_test, y_train, y_test, classifier=classifiers['SVM'])],
-        ['Decision Tree', _classify(x_train, x_test, y_train, y_test, classifier=classifiers['DT'])],
-        ['Extra Trees', _classify(x_train, x_test, y_train, y_test, classifier=classifiers['ET'])],
-        ['Linear Discriminant Analysis', _classify(x_train, x_test, y_train, y_test, classifier=classifiers['LDA'])],
-        ['kNN', _classify(x_train, x_test, y_train, y_test, classifier=classifiers['KNN'])],
-        ['Gaussian Naive Bayes', _classify(x_train, x_test, y_train, y_test, classifier=classifiers['GNB'])],
-        ['Multi-layer Perceptron', _classify(x_train, x_test, y_train, y_test, classifier=classifiers['MLP'])],
-        ['Random Forest', _classify(x_train, x_test, y_train, y_test, classifier=classifiers['RF'])],
+        ['SVM',
+         _classify(x_train, x_test, y_train, y_test,
+                   classifier=classifiers['SVM'])],
+        ['Decision Tree',
+         _classify(x_train, x_test, y_train, y_test,
+                   classifier=classifiers['DT'])],
+        ['Extra Trees',
+         _classify(x_train, x_test, y_train, y_test,
+                   classifier=classifiers['ET'])],
+        ['Linear Discriminant Analysis',
+         _classify(x_train, x_test, y_train, y_test,
+                   classifier=classifiers['LDA'])],
+        ['kNN',
+         _classify(x_train, x_test, y_train, y_test,
+                   classifier=classifiers['KNN'])],
+        ['Gaussian Naive Bayes',
+         _classify(x_train, x_test, y_train, y_test,
+                   classifier=classifiers['GNB'])],
+        ['Multi-layer Perceptron',
+         _classify(x_train, x_test, y_train, y_test,
+                   classifier=classifiers['MLP'])],
+        ['Random Forest',
+         _classify(x_train, x_test, y_train, y_test,
+                   classifier=classifiers['RF'],
+                   dump_name=dump_name)],
     ]
 
     if results is not None:
