@@ -1,0 +1,11 @@
+numpy
+sklearn
+scikit-learn
+pandas
+git+https://github.com/jundongl/scikit-feature
+jupyter
+matplotlib
+
+Py-FS
+ReliefF
+tabulate
