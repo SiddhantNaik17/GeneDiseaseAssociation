@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Disease Prediction</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <header class="py-8 flex justify-center  text-2xl bg-sky-500/100 font-mono "> Gene Disease Prediction</header>
+        
+        <div class="grid grid-cols-2 gap-4 p-8" >
+            <!-- image section-->
+            <div>
+                <img class=" mx-auto p-6 m-4 "
+                    src="{{ url_for('static', filename = 'p.svg') }}"
+                    alt=""
+                />
+            </div>
+            <!-- image section end-->
+
+            <!-- File Upload-->
+            <div class="flex flex-col">
+                <div class=" h-96 h-full border p-8 border-gray-300 rounded ">
+                    <form method="POST" enctype="multipart/form-data">
+                        <label class="block mb-6">
+                            <span class="text-gray-700">{{ form.input_file.label }}</span>
+                            {{ form.input_file(size=20) }}
+                        </label>
+
+                        <!-- Dropdown-->
+                        <label for="cancers">{{ form.cancer_type.label }}</label>
+                            {{ form.cancer_type(size=20) }}
+                        <!-- Dropdown End-->
+            
+                        <!--Buttton-->
+                            <div class="mb-2 py-6">
+                                <button type="submit" class="
+                                    h-10
+                                    px-5
+                                    text-indigo-100
+                                    bg-sky-500/100 
+                                    hover:bg-cyan-600
+                                    font-mono
+                                    rounded
+                                    transition-colors
+                                    duration-150
+                                    focus:shadow-outline
+                                    ">
+                                    Predict
+                                </button>
+                            </div>
+                            <!--Buttton End-->
+                            {% if prediction %}
+                            <div class=" h-96 p-8 border border-gray-300 rounded">
+                                <span>
+                                    The input sample is {{ prediction }}
+                                </span>
+                            </div>
+                            {% endif %}
+                    </form>
+                </div>
+                    
+             </div>
+                <!-- Output -->
+                
+            </div>
+             <!-- File Upload End-->
+            
+        </div>
+
+
+    </body>

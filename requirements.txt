@@ -9,3 +9,6 @@ matplotlib
 Py-FS
 ReliefF
 tabulate
+
+flask
+Flask-WTF
