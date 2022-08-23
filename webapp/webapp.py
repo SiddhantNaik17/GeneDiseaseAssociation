@@ -42,10 +42,10 @@ def index():
             data.append(lines[-1])
 
         # Load the trained Linear Discriminant Analysis (LDA) model
-        classifier = load('../joblibs/' + cancer_type + '.joblib')
+        classifier = load('joblibs/' + cancer_type + '.joblib')
 
         # Load the indexes of features selected by Harmony Search (HS)
-        idx = load('../joblibs/' + cancer_type + '-idx.joblib')
+        idx = load('joblibs/' + cancer_type + '-idx.joblib')
 
         try:
             # Perform feature selection

@@ -41,7 +41,8 @@ def classify(x_train, x_test, y_train, y_test, results=None, fs='None', dump_nam
                    classifier=classifiers['ET'])],
         ['Linear Discriminant Analysis',
          _classify(x_train, x_test, y_train, y_test,
-                   classifier=classifiers['LDA'])],
+                   classifier=classifiers['LDA'],
+                   dump_name=dump_name)],
         ['kNN',
          _classify(x_train, x_test, y_train, y_test,
                    classifier=classifiers['KNN'])],
@@ -53,8 +54,7 @@ def classify(x_train, x_test, y_train, y_test, results=None, fs='None', dump_nam
                    classifier=classifiers['MLP'])],
         ['Random Forest',
          _classify(x_train, x_test, y_train, y_test,
-                   classifier=classifiers['RF'],
-                   dump_name=dump_name)],
+                   classifier=classifiers['RF'])],
     ]
 
     if results is not None:
