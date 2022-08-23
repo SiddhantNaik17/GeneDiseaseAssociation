@@ -48,6 +48,12 @@ def index():
         idx = load('joblibs/' + cancer_type + '-idx.joblib')
 
         try:
+            if (cancer_type == 'Brain Cancer' and len(data) != 1070) or \
+                    (cancer_type == 'Breast Cancer' and len(data) != 17814) or \
+                    (cancer_type == 'Liver Cancer' and len(data) != 37582) or \
+                    (cancer_type == 'Prostate Cancer' and len(data) != 339):
+                raise IndexError
+
             # Perform feature selection
             # Select only those features that were selected by HS while training the model
             data = np.array([data])
