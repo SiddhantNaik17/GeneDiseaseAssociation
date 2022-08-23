@@ -13,18 +13,18 @@
             <!-- image section-->
             <div>
                 <img class=" mx-auto p-6 m-4 "
-                    src="{{ url_for('static', filename = 'p.svg') }}"
+                    src="{{ url_for('static', filename = 's.svg') }}"
                     alt=""
                 />
             </div>
             <!-- image section end-->
 
             <!-- File Upload-->
-            <div class="flex flex-col">
-                <div class=" h-96 h-full border p-8 border-gray-300 rounded ">
+            <div class="flex flex-col ">
+                <div class="  h-96 h-full border p-8 border-gray-300 rounded ">
                     <form method="POST" enctype="multipart/form-data">
-                        <label class="block mb-6">
-                            <span class="text-gray-700">{{ form.input_file.label }}</span>
+                        <label class=" block mb-6">
+                            <span class=" text-gray-700">{{ form.input_file.label }}</span>
                             {{ form.input_file(size=20) }}
                         </label>
 
@@ -49,8 +49,24 @@
                                     ">
                                     Predict
                                 </button>
+                                <input type="reset" class="
+                                    h-10
+                                    px-5
+                                    text-indigo-100
+                                    bg-sky-500/100
+                                    hover:bg-cyan-600
+                                    font-mono
+                                    rounded
+                                    text-right
+                                    transition-colors
+                                    duration-150
+                                    focus:shadow-outline
+                                    ">
+                                </input>
+
                             </div>
                             <!--Buttton End-->
+
                             {% if prediction %}
                             <div class=" h-96 p-8 border border-gray-300 rounded">
                                 <span>

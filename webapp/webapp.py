@@ -42,12 +42,18 @@ def index():
             data.append(lines[-1])
 
         # Load the trained Linear Discriminant Analysis (LDA) model
-        classifier = load('../joblibs/' + cancer_type + '.joblib')
+        classifier = load('joblibs/' + cancer_type + '.joblib')
 
         # Load the indexes of features selected by Harmony Search (HS)
-        idx = load('../joblibs/' + cancer_type + '-idx.joblib')
+        idx = load('joblibs/' + cancer_type + '-idx.joblib')
 
         try:
+            if (cancer_type == 'Brain Cancer' and len(data) != 1070) or \
+                    (cancer_type == 'Breast Cancer' and len(data) != 17814) or \
+                    (cancer_type == 'Liver Cancer' and len(data) != 37582) or \
+                    (cancer_type == 'Prostate Cancer' and len(data) != 339):
+                raise IndexError
+
             # Perform feature selection
             # Select only those features that were selected by HS while training the model
             data = np.array([data])
